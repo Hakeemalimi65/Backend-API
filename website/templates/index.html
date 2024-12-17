@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Contact List</h1>
+    <a href="{{ url_for('views.create') }}" class="btn">Add Contact</a>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.first_name }}</td>
+                    <td>{{ contact.last_name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>
+                        <a href="{{ url_for('views.update', id=contact.id) }}" class="btn">Edit</a>
+                        <a href="{{ url_for('views.delete', id=contact.id) }}" class="btn">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
